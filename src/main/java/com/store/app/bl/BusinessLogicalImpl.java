@@ -13,8 +13,7 @@ class BusinessLogicalImpl extends AbstractDispatcher {
 
     @Override
     protected String defaultStep(String defaultStr){
-        super.setProcess(true);
-        super.setCurrentStep(Steps.COMMAND);
+        super.start();
         return defaultStr + "Commands: " + handlers.keySet().toString();
     }
 
@@ -33,7 +32,7 @@ class BusinessLogicalImpl extends AbstractDispatcher {
     protected String execute(String req){
         Response res = this.handlers.get(this.command).connect(req);
         if (!res.process) {
-            super.setCurrentStep(Steps.DEFAULT);
+            super.finish();
             this.command = null;
             return this.defaultStep(res.response);
         }

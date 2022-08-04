@@ -5,6 +5,7 @@ import com.store.app.bl.handlers.utils.Marker;
 import com.store.app.bl.storage.db.goods.Goods;
 import com.store.app.bl.storage.db.goods.GoodsBuilder;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.function.Predicate;
 
@@ -12,6 +13,8 @@ import java.util.function.Predicate;
 public class Storage {
 
     private static List<Goods> goodsSet = null;
+    private static List<Goods> basket = new ArrayList<>();
+
 
     private Storage(){}
 
@@ -32,6 +35,10 @@ public class Storage {
 
     public static Goods getItem(int selected) {
         return goodsSet.get(selected - 1);
+    }
+
+    public static List<Goods> getBasket(){
+        return basket;
     }
 
 

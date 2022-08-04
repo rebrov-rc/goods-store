@@ -2,7 +2,7 @@ package com.store.app.bl.handlers;
 
 import com.store.app.bl.Connectable;
 import com.store.app.bl.handlers.basket.BasketHandler;
-import com.store.app.bl.handlers.data.FunctionSupplier;
+import com.store.app.bl.handlers.data.FunctionSupplierAdapter;
 import com.store.app.bl.handlers.filters.AvailableGoodsHandler;
 import com.store.app.bl.handlers.filters.FilteringGoodsHandler;
 import com.store.app.bl.storage.db.Storage;
@@ -21,11 +21,11 @@ public class HandlerSources {
         src.put("avl", new AvailableGoodsHandler());
         src.put("flt", new FilteringGoodsHandler());
         src.put("bsk", new BasketHandler());
-        src.put("upd", new FunctionSupplier(() -> {
+        src.put("upd", new FunctionSupplierAdapter(() -> {
             Storage.updateGoods();
             return "list was updated\n";
         }));
-        src.put("list", new FunctionSupplier(() -> Storage.getMarkedList(x -> true)));
+        src.put("list", new FunctionSupplierAdapter(() -> Storage.getMarkedList(x -> true)));
 
     }
 

@@ -5,11 +5,11 @@ import com.store.app.bl.Response;
 
 import java.util.function.Supplier;
 
-public class FunctionSupplier implements Connectable {
+public class FunctionSupplierAdapter implements Connectable {
 
     private final Supplier<String> supplier;
 
-    public FunctionSupplier(Supplier<String> supplier){
+    public FunctionSupplierAdapter(Supplier<String> supplier){
         this.supplier = supplier;
     }
 

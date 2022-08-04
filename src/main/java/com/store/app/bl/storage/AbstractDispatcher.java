@@ -55,4 +55,14 @@ public abstract class AbstractDispatcher implements Connectable {
     public void setCurrentStep(Steps currentStep) {
         this.currentStep = currentStep;
     }
+
+    protected void start(){
+        this.process = true;
+        this.currentStep = Steps.COMMAND;
+    }
+
+    protected void finish(){
+        this.process = false;
+        this.currentStep = Steps.DEFAULT;
+    }
 }
